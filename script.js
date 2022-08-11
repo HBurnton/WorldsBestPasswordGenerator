@@ -20,5 +20,25 @@ function getPwLength(){
   return length;
 }
 
+/*Create Function to create initial string to pull possible characters from*/
+function getPwStartString(){
+  var pwString = "";
+  while(pwString == ""){
+    if(confirm("Would You Like To Include Uppercase Letters?")){
+      pwString += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    if(confirm("Would You Like To Include Lowercase Letters?")){
+      pwString += "abcdefghijklmnopqrstuvwxyx";
+    }
+    if(confirm("Would You Like To Include Numbers?")){
+      pwString += "0123456789"
+    }
+    if(confirm("Would You Like To Include Special Characters?")){
+      pwString += " !\"#$%&'()*+,-./:;<=>?@[]\\^_`{}|~"
+    }
+  }
+  return pwString;
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
