@@ -35,6 +35,9 @@ function getPwStartString(){
     if(confirm("Would You Like To Include Special Characters?")){
       pwString += " !\"#$%&'()*+,-./:;<=>?@[]\\^_`{}|~"
     }
+    if(pwString == ""){
+      alert("No criteria set, please choose confirm one of the following selections.")
+    }
   }
   return pwString;
 }
