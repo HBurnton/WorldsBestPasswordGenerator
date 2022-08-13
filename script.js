@@ -7,7 +7,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 /* Create Function to get PW Length from User */
@@ -38,6 +37,19 @@ function getPwStartString(){
     }
   }
   return pwString;
+}
+
+/*function takes User-Criteria string returned by getPwStartString() and pulls random character as
+indicated by user input pwLength.*/
+
+function generatePassword(){
+  var finalPw = "";
+  var PwStartingString = getPwStartString();
+  var pwLength = getPwLength();
+  for(var i = 0; i < pwLength; i++){
+    finalPw += PwStartingString.charAt(Math.floor(Math.random() * PwStartingString.length));
+  }
+  return finalPw;
 }
 
 // Add event listener to generate button
