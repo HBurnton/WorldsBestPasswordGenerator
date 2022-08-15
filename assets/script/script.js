@@ -13,9 +13,12 @@ function writePassword() {
 function getPwLength(){
   var length = 0;
   length = parseInt(prompt("Please enter the desired length of password.\nEnter 8-128."));
-  while (length < 8 || length > 128 || isNaN(length)){
+
+  //Checks if length entered above is valid and a number, if not re-prompts user
+  while (length < 8 || length > 128 || isNaN(length)){ 
     length = parseInt(prompt("Password Length Rejected. Please Enter Desired Length in Arabic Numeral Format between 8-128 (Inclusive)"))
     }
+
   return length;
 }
 
@@ -23,6 +26,7 @@ function getPwLength(){
 function getPwStartString(){
   var pwString = "";
   while(pwString == ""){
+    //Prompts user for which characters they would like to include. If confirm true, set string characters are concat'd
     if(confirm("Would You Like To Include Uppercase Letters?")){
       pwString += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
@@ -35,6 +39,7 @@ function getPwStartString(){
     if(confirm("Would You Like To Include Special Characters?")){
       pwString += " !\"#$%&'()*+,-./:;<=>?@[]\\^_`{}|~"
     }
+    //If there have been no added characters to the string, loop will rerun
     if(pwString == ""){
       alert("No criteria set, please choose confirm one of the following selections.")
     }
@@ -46,10 +51,10 @@ function getPwStartString(){
 indicated by user input pwLength.*/
 
 function generatePassword(){
-  var finalPw = "";
-  var PwStartingString = getPwStartString();
-  var pwLength = getPwLength();
-  for(var i = 0; i < pwLength; i++){
+  var finalPw = ""; 
+  var PwStartingString = getPwStartString(); //Prompts user first for PW Criteria
+  var pwLength = getPwLength(); //Gets user desired length of PW 
+  for(var i = 0; i < pwLength; i++){ //Runs loop for pwLength, and pulls random character using charAt and adds to final PW string
     finalPw += PwStartingString.charAt(Math.floor(Math.random() * PwStartingString.length));
   }
   return finalPw;
